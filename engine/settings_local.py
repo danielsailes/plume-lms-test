@@ -20,18 +20,18 @@ sys.path.append(APPLICATION_DIR)
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v&!oc!xe2o&4a35=c3r-*1rn&opgoqoak%-r)l_pq9905+@s*6'
+SECRET_KEY = '*4*gc)h(!z1byvdb4*i&%^)9g^#a=08!%5)v-w)8m(=sllea*l'
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # One month
 ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_SALT = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
+REGISTRATION_SALT = "5e6fd55053479795b7e4665d58819f79t6781e"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-ADMINS = [('Osama Rasheed', 'iamosamarasheed@gmail.com'), ]
+ADMINS = [('Dan Sailes', 'daniel@drs-web.co.uk'), ]
 
 # Application definition
 
@@ -127,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -158,12 +158,12 @@ CACHES = {
     }
 }
 
-EMAIL_HOST_USER = "prepboard.ayulla@gmail.com"
-EMAIL_HOST_PASSWORD = "K3%%iamosama%%K3"
+EMAIL_HOST_USER = "EMAIL_HOST_USER"
+EMAIL_HOST_PASSWORD = "EMAIL_HOST_PASSWORD"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 60
-DEFAULT_FROM_EMAIL = 'prepboard.ayulla@gmail.com'
+DEFAULT_FROM_EMAIL = 'DEFAULT_FROM_EMAIL'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 LOGGING = {
