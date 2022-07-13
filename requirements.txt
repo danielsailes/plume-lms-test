@@ -1,0 +1,7 @@
+Django
+django-db-logger
+django-simple-captcha
+Pillow
+six
+djangorestframework
+mysqlclient
