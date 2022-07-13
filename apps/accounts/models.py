@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 
 
 class PasswordRecovery(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.DO_NOTHING,
+    )
     creation_time = models.DateTimeField(default=datetime.now)
     secret_key = models.CharField(max_length=256)
     last_modified = models.DateTimeField(default=datetime.now)

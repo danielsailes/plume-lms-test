@@ -10,7 +10,7 @@ class DiscussionTopic(models.Model):
     title = models.CharField(max_length=60)
     slug = models.SlugField(max_length=100, unique=True)
     body = models.TextField(blank=True, default='')
-    owner = models.ForeignKey(User, blank=True, null=True, related_name=_('owner'))
+    owner = models.ForeignKey(User, blank=True, null=True, related_name=_('owner'), on_delete=models.DO_NOTHING)
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now=True)
     subscribers = models.ManyToManyField(User, related_name="topic_subscribers")
@@ -46,9 +46,9 @@ class DiscussionEntry(models.Model):
     ''' Model for nested discussion entry'''
     MAX_REPLIES = 1
     body = models.TextField(blank=False)
-    topic = models.ForeignKey(DiscussionTopic, related_name=_('Entries'))
-    user = models.ForeignKey(User,  related_name=_('Entries'))
-    parent = models.ForeignKey('self', verbose_name= _('Reply to'), null=True, blank=True, related_name=_('replies'))
+    topic = models.ForeignKey(DiscussionTopic, related_name=_('Entries'), on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User,  related_name=_('Entries'), on_delete=models.DO_NOTHING)
+    parent = models.ForeignKey('self', verbose_name= _('Reply to'), null=True, blank=True, related_name=_('replies'), on_delete=models.DO_NOTHING)
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now=True)
     attachment = models.FileField(upload_to='users/%Y/%m/%d', blank=True)

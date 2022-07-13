@@ -1,9 +1,10 @@
+from rest_framework import permissions
 from rest_framework import viewsets
 # from .serializers import QuizSerializer
 from .models import Quiz
 from rest_framework import mixins
 from rest_framework.response import Response
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import action
 
 
 class QuizCreateListRetrieveViewSet(mixins.CreateModelMixin,
@@ -18,7 +19,7 @@ class QuizViewSet(QuizCreateListRetrieveViewSet):
     
     queryset = Quiz.objects.all()
     # serializer_class = QuizSerializer
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_serializer_class(self):
 
@@ -45,7 +46,7 @@ class QuizViewSet(QuizCreateListRetrieveViewSet):
         
         return Response(serializer.data)
 
-    @detail_route(methods=['put'])
+    @action(detail=True, methods=['put'])
     def publish(self, request, *args, **kwargs):
         
         quiz = self.get_object()
@@ -53,7 +54,7 @@ class QuizViewSet(QuizCreateListRetrieveViewSet):
         quiz.save()
         return Response(quiz.published)
 
-    @detail_route(methods=['put'])
+    @action(detail=True, methods=['put'])
     def archive(self, request, *args, **kwargs):
 
         quiz = self.get_object()
@@ -70,7 +71,7 @@ class QuizViewSet(QuizCreateListRetrieveViewSet):
         quiz.save()
         return Response(quiz.archived)
 
-    @detail_route(methods=['put'])
+    @action(detail=True, methods=['put'])
     def delete(self, request, *args, **kwargs):
         
         quiz = self.get_object()

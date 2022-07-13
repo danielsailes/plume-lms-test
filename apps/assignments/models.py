@@ -77,9 +77,9 @@ class Assignment(TimeStampedModel):
 	notify_users_content_changed = models.BooleanField(default=False)
 	do_not_count_on_final_grade = models.BooleanField(default=False)
 	moderate_grading = models.BooleanField(default=False)
-	display_grade_as = models.ForeignKey(DisplayGrade, related_name='display_grade')
-	course = models.ForeignKey(Course, related_name='course')
-	group = models.ForeignKey(AssignmentGroup, related_name='group')	
+	display_grade_as = models.ForeignKey(DisplayGrade, related_name='display_grade', on_delete=models.DO_NOTHING)
+	course = models.ForeignKey(Course, related_name='course', on_delete=models.DO_NOTHING)
+	group = models.ForeignKey(AssignmentGroup, related_name='group', on_delete=models.DO_NOTHING)	
 	
 	
 	def __unicode__(self):
@@ -90,8 +90,8 @@ class AssignmentSubmissionOption(models.Model):
 	"""
 	Define options allowed, base on the submission type chosen for an assignment
 	"""
-	assignment = models.OneToOneField(Assignment, related_name='submission_options', primary_key=True)
-	submission_type = models.ForeignKey(SubmissionType, related_name='submission_type')
+	assignment = models.OneToOneField(Assignment, related_name='submission_options', primary_key=True, on_delete=models.DO_NOTHING)
+	submission_type = models.ForeignKey(SubmissionType, related_name='submission_type', on_delete=models.DO_NOTHING)
 	online_text_entry = models.BooleanField(default=False)
 	online_url = models.BooleanField(default=False)
 	media_recording = models.BooleanField(default=False)
@@ -116,7 +116,7 @@ class AssignmentDate(models.Model):
 	"""
 	A model to stores all available dates for a given assignments
 	"""
-	assignment 	= models.ForeignKey(Assignment, related_name='assignments_dates')
+	assignment 	= models.ForeignKey(Assignment, related_name='assignments_dates', on_delete=models.DO_NOTHING)
 	due_date = models.DateTimeField(null=True, blank=True)
 	available_from = models.DateTimeField(null=True, blank=True)
 	available_until = models.DateTimeField(null=True, blank=True)
@@ -126,8 +126,8 @@ class StudentAssignmentDate(models.Model):
 	"""
 	This model stores all relations between assignments and the student
 	"""
-	assignment_date = models.ForeignKey(AssignmentDate, related_name='students')
-	student = models.ForeignKey(User)
+	assignment_date = models.ForeignKey(AssignmentDate, related_name='students', on_delete=models.DO_NOTHING)
+	student = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 	grade = models.IntegerField(default=0)
 
 
@@ -136,8 +136,8 @@ class AssignmentSubmissionComments(TimeStampedModel):
 	This model stores comments made by the student and instructor according to 
 	submissions
 	"""
-	user = models.ForeignKey(User)
-	student_assignment_date = models.ForeignKey(StudentAssignmentDate, related_name='comments')
+	user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+	student_assignment_date = models.ForeignKey(StudentAssignmentDate, related_name='comments', on_delete=models.DO_NOTHING)
 	attach_file = models.FileField(upload_to='uploads/', blank=True, null=True)
 	comment = models.TextField(blank=True, null=True)
 
@@ -149,7 +149,7 @@ class AssignmentSubmission(TimeStampedModel):
 	"""
 	This model stores all different submissions made by the student
 	"""
-	student_assignment_date = models.ForeignKey(StudentAssignmentDate, related_name='submissions')
+	student_assignment_date = models.ForeignKey(StudentAssignmentDate, related_name='submissions', on_delete=models.DO_NOTHING)
 	attach_file = models.FileField(upload_to='uploads/', blank=True, null=True)
 	text_entry = models.TextField(blank=True, null=True)
 	website_url = models.URLField(blank=True, null=True)
@@ -168,4 +168,4 @@ class GroupCategory(models.Model):
 	automatically_assign_leader = models.BooleanField(default=False)
 	set_first_student_leader = models.BooleanField(default=False)
 	set_random_leader = models.BooleanField(default=False)
-	course = models.ForeignKey(Course)
+	course = models.ForeignKey(Course, on_delete=models.DO_NOTHING)

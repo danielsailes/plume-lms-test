@@ -3,7 +3,7 @@ from discussion.serializers import EntrySerializer, TopicSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import action
 
 
 
@@ -17,7 +17,7 @@ class TopicViewSet(viewsets.ModelViewSet):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
     permission_classes = (IsAuthenticated,)
 
-    @detail_route(methods=['post'],
+    @action(detail=True, methods=['post'],
                   authentication_classes=[BasicAuthentication],
                   permission_classes=[IsAuthenticated])
     def subscribe(self, request, *args, **kwargs):

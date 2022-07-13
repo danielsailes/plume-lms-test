@@ -9,7 +9,7 @@ class Courses(models.Model):
     title = models.CharField(max_length=200)
     number = models.CharField(max_length=10)
     description = models.TextField()
-    owner = models.ForeignKey(User, related_name=_('course'), null=True, blank=True)
+    owner = models.ForeignKey(User, related_name=_('course'), null=True, blank=True, on_delete=models.DO_NOTHING)
     members = models.ManyToManyField(User, related_name=_('Members'), null=True, blank=True)
     hidden = models.BooleanField(default=False, blank=True)
     enrollment_start_date = models.DateTimeField()

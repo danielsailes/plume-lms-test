@@ -17,14 +17,14 @@ from .models import (
 		StudentAssignmentDate
 	)
 
-from .serializers import (
-		AssignmentSerializer, 
-		AssignmentDetailListSerializer, 
-		AssigmentSubmissionDetailSerializer, 
-		AssignmentSubmissionSerializer,
-		AssignmentSubmissionCommentsSerializer,
-		AssignmentSubmissionComments
-	)
+# from .serializers import (
+# 		AssignmentSerializer, 
+# 		AssignmentDetailListSerializer, 
+# 		AssigmentSubmissionDetailSerializer, 
+# 		AssignmentSubmissionSerializer,
+# 		AssignmentSubmissionCommentsSerializer,
+# 		AssignmentSubmissionComments
+# 	)
 
 
 

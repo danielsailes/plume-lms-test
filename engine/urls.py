@@ -3,12 +3,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from quiz.views import QuizVewSet
+# from quiz.views import QuizVewSet
 from assignments import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'quizzes', QuizViewSet)
+# router.register(r'quizzes', QuizViewSet)
 router.register(r'v1/courses/(?P<course_slug>[\w-]+)/assignments', views.AssignmentViewSet)
 router.register(r'v1/assignments/submissions', views.StudentAssignmentViewSet)
     
