@@ -4,4 +4,4 @@ django-simple-captcha
 Pillow
 six
 djangorestframework
-mysql-client
+mysqlclient

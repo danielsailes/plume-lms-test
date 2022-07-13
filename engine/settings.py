@@ -27,7 +27,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_SALT = "5e6fd55053479795b7e4665d58819f79t6781e"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -105,7 +105,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prepboard_staging',
         'USER': 'drs_plume',
-        'PASSWORD': 'adminadmin',
+        'PASSWORD': 'u54yPXA5q5',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
     },
